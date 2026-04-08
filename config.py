@@ -19,9 +19,9 @@ class Config:
     poly_passphrase: str = os.getenv("POLY_PASSPHRASE", "")
 
     # --- 套利參數 ---
-    min_spread_pct: float = float(os.getenv("MIN_SPREAD_PCT", "0.5"))
+    min_spread_pct: float = float(os.getenv("MIN_SPREAD_PCT", "5.0"))
     max_position_usdc: float = float(os.getenv("MAX_POSITION_USDC", "50"))
-    scan_interval_sec: int = int(os.getenv("SCAN_INTERVAL_SEC", "10"))
+    scan_interval_sec: int = int(os.getenv("SCAN_INTERVAL_SEC", "20"))
     dry_run: bool = os.getenv("DRY_RUN", "true").lower() == "true"
 
     # --- 策略開關 ---
@@ -44,14 +44,14 @@ class Config:
     maker_fee_pct: float = 0.0
 
     # --- 安全限制 ---
-    max_daily_trades: int = 100
-    max_daily_loss_usdc: float = float(os.getenv("MAX_DAILY_LOSS_USDC", "100.0"))
-    max_concurrent_positions: int = 10
+        max_daily_trades: int = int(os.getenv("MAX_DAILY_TRADES", "500"))
+        max_daily_loss_usdc: float = float(os.getenv("MAX_DAILY_LOSS_USDC", "50"))
+        max_concurrent_positions: int = int(os.getenv("MAX_CONCURRENT_POSITIONS", "10"))
 
     # --- 進階參數 ---
-    min_liquidity: float = float(os.getenv("MIN_LIQUIDITY", "100"))
-    min_volume_24h: float = float(os.getenv("MIN_VOLUME_24H", "1000"))
-    imbalance_threshold: float = float(os.getenv("IMBALANCE_THRESHOLD", "0.75"))
+        min_liquidity: float = float(os.getenv("MIN_LIQUIDITY", "500"))
+        min_volume_24h: float = float(os.getenv("MIN_VOLUME_24H", "5000"))
+        imbalance_threshold: float = float(os.getenv("IMBALANCE_THRESHOLD", "0.80"))
 
     def validate(self) -> list[str]:
         errors = []
